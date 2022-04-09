@@ -1,0 +1,295 @@
+.owl-carousel .item {
+  /* border: 1px solid black; */
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.owl-next {
+  float: right;
+}
+.owl-prev {
+  float: left;
+}
+.owl-prev span {
+  font-size: 24px;
+  font-weight: bold;
+}
+.owl-next span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.team-bg {
+	background-color: #f8f9fa;
+	overflow: hidden;
+}
+.team .section-title {
+	padding-bottom: 40px;
+}
+.team .section-title .main-team-subheading {
+	font-size: 14px;
+	font-weight: 500;
+	padding: 0;
+	line-height: 1px;
+	margin: 0 0 5px 0;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #aaaaaa;
+}
+.team .section-title .main-team-subheading::after {
+	content: "";
+	width: 120px;
+	height: 1px;
+	display: inline-block;
+	background: #556270;
+	margin: 4px 10px;
+}
+.team .main-team-heading {
+	margin: 0;
+	font-size: 36px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #556270;
+}
+.team .member {
+	position: relative;
+	box-shadow: 0px 2px 15px rgba(85, 98, 112, 0.08);
+	padding: 30px;
+	border-radius: 4px;
+	background: #fff;
+}
+.team .member .pic {
+	overflow: hidden;
+	width: 140px;
+	border-radius: 4px;
+}
+.team .member .pic img {
+	transition: ease-in-out 0.3s;
+}
+.team .member:hover img {
+transform: scale(1.1);
+}
+.team .member .member-info {
+	padding-left: 30px;
+}
+.team .member .member-heading {
+	font-weight: 700;
+	margin-bottom: 5px;
+	font-size: 20px;
+	color: #556270;
+	line-height: 1.2;
+}
+.team .member span {
+	display: block;
+	font-size: 15px;
+	padding-bottom: 10px;
+	position: relative;
+	font-weight: 500;
+}
+.team .member span::after {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 50px;
+	height: 1px;
+	background: #dee2e6;
+	bottom: 0;
+	left: 0;
+}
+.team .member .member-para {
+	margin: 10px 0 0 0;
+	font-size: 14px;
+}
+.team .member .social {
+	margin-top: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.team .member .social a {
+	transition: ease-in-out 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	width: 32px;
+	height: 32px;
+	background: #8795a4;
+}
+.team .member .social a + a {
+margin-left: 8px;
+}
+.team .member .social a:hover {
+	background: #41A1FD;
+}
+.team .member .social a .team-icon {
+	color: #fff;
+	font-size: 16px;
+	margin: 0 2px;
+}
+
+/* contect page css */
+
+@import url(https://fonts.googleapis.com/css?family=Cherry+Swash);
+
+.body{
+  margin:0;
+  padding:0;
+  }
+
+h2{
+  font-size:35px;
+  text-align:center;
+  font-family:Cherry Swash;
+  text-shadow:2px 1px 1px #fff;
+}
+
+.formBox{
+  margin:200px auto;
+  max-width:500px;
+  background:#000;
+  padding:50px;
+  border-radius:20px;
+  box-shadow:5px 4px 10px;
+}
+
+.inputBox{
+  position:relative;
+  margin-top:40px;
+  /* border-size:border-box; */
+  }
+
+
+.input{
+  width:100%;
+  height:40px;
+  border:none;
+  border-bottom:1px solid #fff;
+  outline:none;
+  background:transparent;
+}
+
+.inputText{
+  font-family:Cherry Swash;
+  position:absolute;
+  color:white;
+  line-height:50px;
+  transition:.5s ease;
+  opacity:.5;
+}
+
+
+.focus .inputText{
+  transform:translateY(-30px);
+  color:red;
+}
+
+textarea{
+  height:100px !important;
+  border:none;
+  border-bottom:2px solid #ddd;
+  background:transparent;
+  
+}
+
+.button{
+  font-family:Cherry Swash;   
+  width:100%;
+  height:40px;
+  border:none;
+  font-weight:bold;
+  font-size:20px;
+  border-radius:10px;
+  position:relative;
+  top:40px;
+  outline:none;
+}
+
+.button:hover{
+   background:#42ebf4;
+}
+
+
+
+/* contect form css  */
+
+@import url(https://fonts.googleapis.com/css?family=Cherry+Swash);
+
+.body{
+  margin:0;
+  padding:0;
+  }
+
+h2{
+  font-size:35px;
+  text-align:center;
+  font-family:Cherry Swash;
+  text-shadow:2px 1px 1px #fff;
+}
+
+.formBox{
+  margin:200px auto;
+  max-width:500px;
+  background:#000;
+  padding:50px;
+  border-radius:20px;
+  box-shadow:5px 4px 10px;
+}
+
+.inputBox{
+  position:relative;
+  margin-top:40px;
+  box-sizing:border-box;
+  }
+
+
+.input{
+  width:100%;
+  height:40px;
+  border:none;
+  border-bottom:1px solid #fff;
+  outline:none;
+  background:transparent;
+}
+
+.inputText{
+  font-family:Cherry Swash;
+  position:absolute;
+  color:white;
+  line-height:50px;
+  transition:.5s ease;
+  opacity:.5;
+}
+
+
+.focus .inputText{
+  transform:translateY(-30px);
+  color:red;
+}
+
+textarea{
+  height:100px !important;
+  border:none;
+  border-bottom:2px solid #ddd;
+  background:transparent;
+  
+}
+
+.button{
+  font-family:Cherry Swash;   
+  width:100%;
+  height:40px;
+  border:none;
+  font-weight:bold;
+  font-size:20px;
+  border-radius:10px;
+  position:relative;
+  top:40px;
+  outline:none;
+}
+
+.button:hover{
+   background:#42ebf4;
+}

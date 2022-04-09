@@ -1,0 +1,73 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Contect us{% endblock title %}
+{% block main-content %}
+
+  <div class="container-fluid">
+  <div class="container">
+    <div class="formBox">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>Contect us</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="inputBox">
+                <div class="inputText">Name</div>
+                <input type="text" name="fname" class="input text-white">
+              </div>
+            </div>
+
+
+            <div class="col-xs-6">
+              <div class="inputBox">
+                <div class="inputText ">Last Name</div>
+                <input type="text" name="lname" class="input text-white">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="inputBox">
+                <div class="inputText">Email</div>
+                <input type="email" name="email" class="input text-white">
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="inputBox">
+                <div class="inputText">Phone</div>
+                <input type="phone" name="phone" class="input text-white">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="inputBox">
+                <div class="inputText">Message</div>
+                <textarea cols="30" rows="10" name="message" class="input text-white"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <input type="submit" class="button bg-warning">
+            </div>
+          </div>
+        </div>
+    </div>
+    </form>
+  </div>
+</div>
+</div>
+ 
+  
+ </div>
+</div>
+{% endblock main-content %}

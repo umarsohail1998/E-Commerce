@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}discount page{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  
+    <div class="mx-2">
+  <h2>Account Details</h2>
+
+  <form action="" method="POST">
+      {% csrf_token %}
+      Enter Date : <input type="number" name="day" placeholder="ex. 1 to 30">
+      <button type="submit">Submit</button>
+  </form>
+  
+
+ 
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for a in accounts %}
+      <tr>
+        <td>{{a.product}}</td>
+        <td>{{a.ordered_date}}</td>
+        <td>{{a.total_price}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    
+
+    
+    
+ 
+</div>
+
+
+  
+ </div>
+</div>
+{% endblock main-content %}
