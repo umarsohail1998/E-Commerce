@@ -6,8 +6,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import authenticate, views as auth_views 
 urlpatterns = [
-    
-
     path('',views.ProductView.as_view(), name='home'),
     path('product-detail/<int:pk> ', views.ProductDetailView.as_view(), name='product-detail'),    
     path('add-to-cart/', views.add_to_cart, name='add-to-cart'),

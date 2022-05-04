@@ -27,7 +27,6 @@ class ProductDetailView(View):
         product = Product.objects.get(pk=pk)
         return render(request, 'app/productdetail.html',{'product': product})
 
-
 @login_required
 def add_to_cart(request):
     user = request.user
@@ -195,7 +194,6 @@ def CustomerRegistrationView(request):
     else:
         form = CustomerRegistrationForm
     return render(request,'app/customerregistration.html', {'form': form})
-
 
 def userLogin(request):
     if request.method == 'POST':
