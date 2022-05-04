@@ -3,8 +3,15 @@ from django.contrib.auth import authenticate, login,logout
 from django.http.response import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.views import View
 from django.shortcuts import redirect, render
+from django import template
+from django.template import loader
+
 from app.models import Customer, Product, Cart, OrderPlaced, ContactUs
 from app.forms import CustomerProfileForm, CustomerRegistrationForm, LoginForm
+import json
+
+top_products = []
+
 
 def log_out(request):
     logout(request)
@@ -37,14 +44,14 @@ def order_placed(request):
                     dt[key] = list(Customer.objects.filter(id=val))[0]
                 elif key not in ['id', '_state','user', 'user_id']:
                     dt[key] =  val
-            new.append(dt)            
+            new.append(dt)
+        print(new)
         return render(request, 'order_placed.html',{"Order_place": new})
 
-    tittle
-    selling_price
-    brand
-    category
 def Products(request):
+    context = {'segment': 'index'}
+    html_template = loader.get_template('product.html')
+    
     if request.user.is_superuser:
         print(request.user)
         lt  = list(Product.objects.filter())
@@ -58,19 +65,22 @@ def Products(request):
                     dt[key] = val
             a_list = ['tittle', 'selling_price', 'brand', 'category', 'Product Sold#']
             new.append(dict(sorted(dt.items(), key=lambda pair: a_list.index(pair[0]))))
-        # print(new[0])
+        
         top_product_sold = {}
         for x in new:
             top_product_sold[x['tittle']] = x['Product Sold#']
-        top_product_sold = dict(sorted(top_product_sold.items(), key=lambda x: x[1], reverse=True))
-        mn = min(list(top_product_sold.values()))
-        mx = max(list(top_product_sold.values()))
-        # for x in top_product_sold:
-            
-        
-        # (value – min) / (max – min) * 100
+        top_product_sold = dict(sorted(top_product_sold.items(), key=lambda pair: pair[1], reverse=True))
+        final =[]
+        for x, y in top_product_sold.items():
+            print(x, y)
+            dt = {}
+            dt['key'] = x
+            dt['val'] = y
+            final.append(dt)
+        print(final)
+        # top_products = top_product_sold
+        return render(request, 'product.html',{"product": new, "stats": json.dumps(final)})
 
-        return render(request, 'product.html',{"product": new, "stats": top_product_sold})
 
 def Customers(request):
     if request.user.is_superuser:
@@ -86,8 +96,20 @@ def Customers(request):
                     
             a_list = ['name', 'locality', 'city', 'Total Order Placed']
             new.append(dict(sorted(dt.items(), key=lambda pair: a_list.index(pair[0]))))
-        print(new[0])
-        return render(request, 'customer.html',{"Customers": new})
+        
+        top_customers = {}
+        for x in new:
+            top_customers[x['name']] = x['Total Order Placed']                
+        top_cust_ = dict(sorted(top_customers.items(), key=lambda pair: pair[1], reverse=True))
+        final = []
+        for x, y in top_cust_.items():
+            print(x, y)
+            dt = {}
+            dt['key'] = x
+            dt['val'] = y
+            final.append(dt)
+        print({"Customers": new, 'stats': final})
+        return render(request, 'customer.html',{"Customers": new, 'stats': final})
 
 def user_login(request):
     if request.method == 'POST':

@@ -13,8 +13,10 @@
         <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
-        {% block add_styles %}
-        {% endblock %}
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        {% comment %} <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script> {% endcomment %}
+        {% block script_ %}
+        {% endblock %}            
     </head>
     
     <body class="sb-nav-fixed">
@@ -32,7 +34,8 @@
 <script>
     $(document).ready(function() {
         $('#example').DataTable();
-    } );
+    });
 </script>
+
     </body>
 </html>
