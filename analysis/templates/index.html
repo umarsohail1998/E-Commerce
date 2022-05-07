@@ -1,0 +1,133 @@
+{% extends 'base_layout.html' %}
+
+{% block script_ %}
+<script>
+    window.onload = function () {
+        var dataPoints = [];
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            theme: "light2", 
+            title: {
+                text: "Top 5 Sold Products"
+            },
+            subtitles: [{
+                fontSize: 16
+            }],
+            data: [{
+                type: "column",
+                yValueFormatString: "#,##0.00",
+                dataPoints: dataPoints
+            }]
+        });
+        
+        function addData(data) {
+            for (var i = 0; i < data.length; i++) {
+                dataPoints.push({
+                    label: data[i].key,
+                    y: data[i].val
+                });
+            }
+            chart.render();
+        }
+        addData({% autoescape off %}{{stats}}{% endautoescape %});
+        console.log(dataPoints)
+        }
+    </script>
+
+{% endblock %}
+
+{% block analysis %}
+
+<div class="container" style="margin-left: 50px; margin-top: 10px;">
+    <div class="row" style="text-align:center;margin:0 auto;">
+        <div class="column" style="background-color:#aaa;">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <h3 class="card-title font-weight-bold">Total Revenue</h3>
+                  <center><p class="card-text">{{Revenue}} PKR</p></center>
+                </div>
+            </div>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <center><h3 class="card-title font-weight-bold">Daily</h3></center>
+                  <center><p class="card-text">{{day}} PKR</p></center>
+                </div>
+            </div>
+        </div>
+        <div class="column" style="background-color:#ccc;">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <center><h3 class="card-title font-weight-bold">Monthly</h3></center>
+                  <center> <p class="card-text"> {{month}} PKR</p></center>
+                </div>
+            </div>
+        </div>
+        <div class="column" style="background-color:#ddd;">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <center><h3 class="card-title font-weight-bold">This Year</h3></center>
+                  <center> <p class="card-text">{{year}} PKR</p> </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <h3 class='font-weight-bold' style='margin-left:30%;'>Products</h3>
+    <div class='row' style="text-align:center;margin:0 auto;">
+        <div class='column'>
+            <h3 class='font-weight-bold'> Top 5 Sold Products  </h3>
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    {% for x in product %}
+                        <li class="list-group-item">{{x.tittle}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="column" style='margin-left:50px; text-align:right;'>
+            <div class ="column" id="chartContainer" style="height: 300px; width: 50%;"></div>
+        </div>
+    </div>
+    <br><br>
+    <h3 class='font-weight-bold' style='margin-left:30%;'>Order Placed</h3>
+    <div class="row" style="text-align:center;margin-top:30px">
+        <div class="column" style="background-color:#aaa;">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <h3 class="card-title font-weight-bold">Total Order</h3>
+                  <center><p class="card-text">{{total_order_placed}}</p></center>
+                </div>
+            </div>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <center><h3 class="card-title font-weight-bold">Daily</h3></center>
+                  <center><p class="card-text">{{today_order}}</p></center>
+                </div>
+            </div>
+        </div>
+        <div class="column" style="background-color:#ccc;">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <center><h3 class="card-title font-weight-bold">Monthly</h3></center>
+                  <center> <p class="card-text"> {{month_order}}</p></center>
+                </div>
+            </div>
+        </div>
+        <div class="column" style="background-color:#ddd;">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <center><h3 class="card-title font-weight-bold">This Year</h3></center>
+                  <center> <p class="card-text">{{this_year_order}}</p> </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+{% endblock %}

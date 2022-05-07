@@ -35,13 +35,11 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
 
-
 CATEGORY_CHOICES = (
     ('C', 'cookware'),
     ('E', 'electronics'),
     ('D', 'dinning'),
     ('k', 'kitchentools'),)
-
 
 class Product(models.Model):
     tittle = models.CharField(max_length=100)
@@ -54,10 +52,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.tittle
-
-
-
-
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -82,7 +76,6 @@ STATUS_CHOICES = (
     ('cancel', 'cancel'),
 )
 
-
 class OrderPlaced(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -92,4 +85,4 @@ class OrderPlaced(models.Model):
     status = models.CharField(
         max_length=50, choices=STATUS_CHOICES, default='pending')
     total_price=models.CharField(max_length=10)
-
+    

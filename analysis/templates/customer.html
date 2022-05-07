@@ -1,0 +1,65 @@
+{% extends 'base_layout.html' %}
+
+{% block script_ %}
+<script>
+    window.onload = function () {
+        var dataPoints = [];
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            theme: "light2", 
+            title: {
+                text: "Top Purchasing Customers"
+            },
+            data: [{
+                type: "column",
+                yValueFormatString: "#,##0.00",
+                dataPoints: dataPoints
+            }]
+        });
+        
+        function addData(data) {
+            for (var i = 0; i < 10; i++) {
+                dataPoints.push({
+                    label: data[i].key,
+                    y: data[i].val
+                });
+            }
+            chart.render();
+        }
+        addData({% autoescape off %}{{stats}}{% endautoescape %});
+        console.log(dataPoints)
+        }
+    </script>
+
+{% endblock %}
+
+
+{% block analysis %}
+<br>
+<div>
+    <br>
+    
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <br>
+    <center><h1> Customers </h1></center>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th> Name </th>
+                <th> Country </th>
+                <th> City </th>
+                <th> Total Order </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in Customers %}
+                <tr>
+                    {% for key, val in row.items %}
+                        <td>{{val}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}                
+        </tbody>
+    </table>
+</div>
+{% endblock %}
